@@ -1,0 +1,40 @@
+ https://drive.google.com/file/d/1kgywpbLaATqxhW8jjlYZpjLCTIqWxU7c/view?ts=5b6d3a64
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>StarWars Demo</title>    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <h1>My SW Fav</h1>
+    <div id="display">
+
+    </div>
+</body>
+    
+    
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const apiURL = 'https://swapi.co/api/people/'
+            fetch(apiURL).then(response => {
+                response.json().then(json => {
+                    console.log(json)
+                    let displayDiv = document.querySelector('#display')
+                    json.results.forEach(character => {
+                        let charDiv = document.createElement('div')
+                        let html = `<h2>${character.name}</h2>`
+                        html += `<p>${character.homeworld}</p>`
+                        charDiv.innerHTML = html
+                        displayDiv.appendChild(charDiv)
+                    })
+                })
+            })
+    })
+
+
+</script>
+    
+
+</html>
